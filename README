@@ -1,0 +1,32 @@
+Here are 2 tools related to Commodore emulation.
+
+makeat64: read a number of PRG, P00 and/or T64 files and pack their contents
+          into a T64
+fixconv: fix corrupt T64 files (invalid end address) "another program called
+         CONV64 was on the scene, and it created faulty T64 files. The ending
+         load address was usually set to $C3C6 regardless of file size. Be
+         aware that these files are still quite common on the Web and FTP
+         sites" (from Peter Schepers' document of T64)
+
+To compile, you need to copy some files from WAV-PRG sources:
+from common_core:
+  block_list.c
+  block_list.h
+  program_block.h
+  wavprg_types.h
+from cmdline:
+  process_input_files.c
+  process_input_files.h
+from wav2prg_core:
+  checksum_state.h
+  create_t64.c
+  create_t64.h
+  wav2prg_block_list.c
+  wav2prg_block_list.h
+from prg2wav_core:
+  prg2wav_utils.c
+  prg2wav_utils.h
+  t64utils.c
+  t64utils.h
+
+Then, type "make makeat64" or "make fixconv" to build the tools
