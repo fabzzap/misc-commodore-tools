@@ -51,7 +51,7 @@ int lastpart(const char* total, const char* last){
 
 int main(int argc, char** argv){
   char *tapename;
-  int currarg,used_entries,total_entries,filesize,offset,diff1,diff2,entries,entry,i;
+  int currarg,used_entries,total_entries,filesize,offset,diff1,diff2,entries,entry;
   unsigned char endadd_low, endadd_high;
   FILE* desc;
   struct program_block program;
@@ -81,8 +81,8 @@ int main(int argc, char** argv){
        goto end;
     }
     total_entries=get_total_entries(desc);
-    for(i=1;i<total_entries;i++)
-      if (get_entry_info(i,desc,&program,&offset))
+    for(entry=1;entry<=total_entries;entry++)
+      if (get_entry_info(entry,desc,&program.info,&offset))
         break;
     printf("1 entry, name %s, ",program.info.name);
     diff1=program.info.end-program.info.start;
